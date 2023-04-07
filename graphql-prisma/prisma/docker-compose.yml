@@ -14,8 +14,9 @@ services:
           default:
             connector: postgres
             host: host.docker.internal
-            port: '5433'
+            port: '5432'
             database: postgres
-            user: prisma
-            password: phe5huCeGeb
+            ssl: false
+            user: postgres
+            password: postgres
             migrations: true

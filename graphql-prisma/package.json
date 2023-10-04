@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "env-cmd ./config/dev.env nodemon src/index.js --ext js, graphql --exec babel-node",
     "start": "nodemon -e js,graphql --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "get-schema": "graphql get-schema -p prisma"
+    "get-schema": "graphql get-schema -p prisma --dotenv config/dev.env"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.9.1",
+    "env-cmd": "^8.0.2",
     "graphql-cli": "^2.16.4",
     "graphql-yoga": "^1.18.3",
     "jsonwebtoken": "^8.3.0",

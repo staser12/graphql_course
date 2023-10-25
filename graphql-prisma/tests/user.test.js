@@ -2,7 +2,7 @@ import 'cross-fetch/polyfill'
 import { gql } from 'apollo-boost'
 import prisma from '../src/prisma'
 import seedDatabase, {userOne} from './utils/seedDatabase'
-import getClient from './utils/getClient'
+import getClient from './utils/getClientOld'
 import { createUser, getUsers, login, getProfile } from './utils/operations'
 
 const client = getClient()
@@ -36,9 +36,11 @@ test('Should create a new user', async () => {
 test('Should expose public author profiles', async () => {
     const response = await client.query({ query: getUsers })
 
-    expect(response.data.users.length).toBe(1)
+    expect(response.data.users.length).toBe(2)
     expect(response.data.users[0].email).toBe(null)
     expect(response.data.users[0].name).toBe('Jen')
+    expect(response.data.users[1].email).toBe(null)
+    expect(response.data.users[1].name).toBe('Mikko')
 })
 
 
